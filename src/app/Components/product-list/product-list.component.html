@@ -1,0 +1,22 @@
+
+<div class="container">
+ <div class="d-flex align-items-center my-3">
+     <label for="">Search</label>
+    <input placeholder="Search...." type="text"  [(ngModel)]="searchInput" class="form-control">
+   </div>
+    <div class="row">
+@for (product of productData; track $index) {
+            <div (click)="openProducrt(product)" style="cursor: pointer;" class="col-md-3 border border-2">
+            <div class="div">
+                <img [src]="product.poster_path" class="w-75 mx-auto" alt="">
+                <h4>{{product.title}}</h4>
+                <p>{{product.overview }}</p>
+                <div class="d-flex justify-content-between w-50 my-3 ">
+                    <span>{{product.id}}</span>
+                    <span>{{product.vote_average}}</span>
+                </div>
+            </div>
+        </div>
+}
+    </div>
+</div>

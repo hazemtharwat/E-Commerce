@@ -1,0 +1,64 @@
+<section>
+  <h1 class="center">Register</h1>
+  <div class="container w-1/2 mx-auto ">
+    <form [formGroup]="RegisterForm" (ngSubmit)="Register()">
+   @for (detail of controls; track $index) {
+     <p-inputGroup class="my-3">
+    <p-inputGroupAddon>
+    <i class="pi pi-user"></i>
+    </p-inputGroupAddon>
+    <input pInputText [placeholder]="detail" 
+    [formControlName]="detail" class="w-25" />
+    </p-inputGroup>
+    @if(RegisterForm.get(detail)?.invalid && (RegisterForm.get(detail)?.touched || RegisterForm.get(detail)?.dirty)){
+     <div class="card">
+    <p-messages 
+        [value]="[{ severity: 'error', summary: detail, detail: getControlError(detail) }]" 
+        [enableService]="false" 
+        [closable]="false" />
+    </div>
+    }
+   }
+@if(RegisterForm.hasError('passwordNotMact')&&RegisterForm.getError('touched')){
+     <div class="card">
+    <p-messages 
+        [value]="[{ severity: 'error', detail: 'كلمه السر غير متطابقه' }]" 
+        [enableService]="false" 
+        [closable]="false" />
+    </div>
+
+}
+   <hr>
+<div class="flex justify-content-between w-25 m-20"> 
+     <label for="gender">gender</label>
+   @for (gn of gender; track $index) {
+    <div #name>
+      <label for="gender" class="ml-2">
+            {{gn}}
+        </label>
+    <p-radioButton class
+            name="gender" 
+            [value]="gn" 
+            formControlName="gender" 
+            inputId="gender" />
+  </div>
+   }
+  </div> 
+    <p-dropdown class="my-10 d-block w-50" 
+    [options]="countries" 
+    formControlName="countries" 
+    optionLabel="name" 
+    optionValue="id"
+    placeholder="Select Country"
+    appendTo="body" />
+   
+   <hr>
+        
+   <button pButton pRipple label="Submit"  class="p-button-success d-block my-3">submit</button>
+  </form >
+  <div class="card flex justify-content-center gap-2">
+   <p-toast />
+       </div>
+  </div>
+</section>
+<ngx-spinner bdColor = "rgba(0,0,0,0.4)" size = "medium" color = "#fff" type = "fire" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
