@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
   }
 
   openProducrt(product:Iproduct):void{
-    this.router.navigate(['./spproduct',product.id] )
+    this.router.navigate(['',product.id] )
     
   }
 

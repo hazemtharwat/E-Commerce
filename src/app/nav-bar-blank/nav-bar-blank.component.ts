@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { PrimeIcons, MenuItem } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { RippleModule } from 'primeng/ripple';
 import { ToolbarModule } from 'primeng/toolbar';
+
 
 @Component({
   selector: 'app-nav-bar-blank',
@@ -29,36 +30,27 @@ export class NavBarBlankComponent {
 
   ngOnInit() {
     this.items = [
-      {
-        label: 'Login',
-        icon: 'pi pi-home',
-        path: 'login',
-      },
-      {
+       {
+        label: 'cart',
+        icon: 'pi pi-cart-plus',
+        path: 'cart',
+      },{
         label: 'Register',
-        icon: 'pi pi-star',
+        icon: 'pi pi-user-plus',
         path: 'Register',
       },
     ];
     this.routerpath = [
       {
         label: 'home',
-        icon: 'pi pi-star',
+        icon: "pi pi-home",
         path: 'home',
       },
-      {
-        label: 'about',
-        icon: 'pi pi-star',
-        path: 'about',
-      },  {
+       {
         label: 'product',
-        icon: 'pi pi-star',
+        icon: 'pi pi-th-large',
         path: 'product',
-      },  {
-        label: 'Dashbord',
-        icon: 'pi pi-star',
-        path: 'Dashbord',
-      },
+      }
     ];
   }
 }

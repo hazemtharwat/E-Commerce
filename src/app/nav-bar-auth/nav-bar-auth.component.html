@@ -1,23 +1,25 @@
 <div class="card ">
-    <p-menubar  class="ms-10 ">
-        <ng-template  pTemplate="start">
-            <h3>logo</h3>
+    <p-menubar  >
+      <ng-template  pTemplate="start">
+           <div class="flex align-items-center ml-8" >
+             <img src="../assets/6bfc1ba8-233d-4e84-b7c6-c19a19c25a9d.png" class="w-1 mr-5 inline-flex " alt="">
             @for(p of routerpath ;track $index){
-                <a pRipple class="align-items-center p-menuitem-link mx-2
+                <a pRipple class="align-items-center p-menuitem-link ml-5
              p-link inline-flex justify-content-center h-3rem  border-[1px] border-width:2px
-             hover:bg-black-alpha-10 transition-all transition-duration-200"
-                [routerLink]="[p?.['path']]" routerLinkActive="border-b-2 p-6">
-                <!-- <span [class]="p.icon" ></span> -->
+             hover:bg-black-alpha-20 transition-all transition-duration-200"
+                [routerLink]="[p?.['path']]">
+                <span [class]="p.icon" ></span>
              <span class="ml-2">{{ p.label }}</span></a>
             }
+           </div>
         </ng-template>
         <ng-template pTemplate="end">
           @for (item of items; track $index) {
-            <a pRipple class="align-items-center p-menuitem-link mx-2
+            <a pRipple class="align-items-center p-menuitem-link mx-3 
              p-link inline-flex justify-content-center h-3rem  border-[1px] border-width:2px
              hover:bg-black-alpha-10 transition-all transition-duration-200"
                 [routerLink]="[item?.['path']]">
-                <span [class]="item.icon" ></span>
+                <span [class]="item.icon "  ></span>
                 <span class="ml-2">{{ item.label }}</span>
             </a>
           }

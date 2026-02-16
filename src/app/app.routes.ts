@@ -1,11 +1,9 @@
 import { registerGardGuard } from './core/gardes/register-gard.guard';
 import { Routes, CanActivateFn } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
-import { AboutComponent } from './Components/about/about.component';
 import { ProductListComponent } from './Components/product-list/product-list.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { RegisterComponent } from './Components/register/register.component';
-import { SPproductComponent } from './Components/spproduct/spproduct.component';
 import { DashbordComponent } from './Components/dashbord/dashbord.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
@@ -27,10 +25,10 @@ export const routes: Routes = [
         .then((c)=>c.UserLayoutComponent),canActivate:[authGardGuard],children:[
     {path:'',redirectTo:'home',pathMatch:'full'},
     {path:"home",component:HomeComponent},
-    {path:"about",component:AboutComponent},
-    {path:"product",component:ProductListComponent},
+    {path:"product",loadComponent:()=>import('./Components/product-list/product-list.component').then((c)=>c.ProductListComponent)},
     {path:"Dashbord",component:DashbordComponent},
-    {path:"spproduct/:id",component:SPproductComponent},
+    {path:"prodDetail",loadComponent:()=>import('./Components/product-detail/product-detail.component').then((c)=>c.ProductDetailComponent)},
+    {path:'cart',loadComponent:()=>import('./Components/cart/cart.component').then((c)=>c.CartComponent)}
     ]},
     {path:"**",component:NotFoundComponent}
 

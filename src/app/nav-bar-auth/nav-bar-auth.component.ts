@@ -22,7 +22,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     InputTextModule,
     RippleModule,
     CommonModule,
-    RouterLinkActive,
   ],
   templateUrl: './nav-bar-auth.component.html',
   styleUrl: './nav-bar-auth.component.scss',
@@ -32,36 +31,32 @@ export class NavBarAuthComponent {
   routerpath: MenuItem[] | undefined;
   ngOnInit() {
     this.items = [
-      {
+{
+        label: 'cart',
+        icon: 'pi pi-cart-plus',
+        path: 'cart',
+      },{
         label: 'Login',
-        icon: 'pi pi-home',
+        icon: 'pi pi-sign-in',
         path: 'login',
       },
       {
         label: 'Register',
-        icon: 'pi pi-star',
+        icon: 'pi pi-user-plus',
         path: 'Register',
       },
+      
     ];
     this.routerpath = [
       {
         label: 'home',
-        icon: 'pi pi-star',
+        icon: 'pi pi-home',
         path: 'home',
-      },
-      {
-        label: 'about',
-        icon: 'pi pi-star',
-        path: 'about',
       },  {
         label: 'product',
-        icon: 'pi pi-star',
+        icon: 'pi pi-th-large',
         path: 'product',
-      },  {
-        label: 'Dashbord',
-        icon: 'pi pi-star',
-        path: 'Dashbord',
-      },
+      },   
     ];
   }
 }
