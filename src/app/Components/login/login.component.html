@@ -1,7 +1,25 @@
 <section>
-    <div class="container">
-        <form [formGroup]="loginForm">
+    
+    <div class="container mx-auto">
+        <h4>login</h4>
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+  @for (userData of loginDataControls; track $index) {
+            <p-inputGroup class="my-3">
+    <p-inputGroupAddon>
+    <i class="pi pi-user"></i>
+    </p-inputGroupAddon>
+    <input pInputText [placeholder]="userData" 
+    [formControlName]="userData" class="w-25" 
+    [autofocus]="true" 
+/>
+    </p-inputGroup>
+  }
+     <button pButton pRipple class="p-button-success d-block my-3">submit</button>
 
         </form>
     </div>    
 </section>
+  <div class="card flex justify-content-center gap-2">
+   <p-toast />
+       </div>
+<ngx-spinner bdColor = "rgba(0,0,0,0.4)" size = "medium" color = "#fff" type = "fire" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

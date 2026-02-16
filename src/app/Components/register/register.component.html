@@ -8,7 +8,7 @@
     <i class="pi pi-user"></i>
     </p-inputGroupAddon>
     <input pInputText [placeholder]="detail" 
-    [formControlName]="detail" class="w-25" />
+    [formControlName]="detail"  [autofocus]="true"  class="w-25" />
     </p-inputGroup>
     @if(RegisterForm.get(detail)?.invalid && (RegisterForm.get(detail)?.touched || RegisterForm.get(detail)?.dirty)){
      <div class="card">
@@ -54,7 +54,7 @@
    
    <hr>
         
-   <button pButton pRipple label="Submit"  class="p-button-success d-block my-3">submit</button>
+   <button pButton pRipple type="submit" #submitbtn class="p-button-success d-block my-3">submit</button>
   </form >
   <div class="card flex justify-content-center gap-2">
    <p-toast />

@@ -8,32 +8,60 @@ import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-nav-bar-auth',
   standalone: true,
-  imports: [AvatarModule, ButtonModule, ToolbarModule,MenubarModule, BadgeModule, 
-    AvatarModule, InputTextModule, RippleModule, CommonModule],
+  imports: [
+    AvatarModule,
+    ButtonModule,
+    ToolbarModule,
+    MenubarModule,
+    BadgeModule,
+    AvatarModule,
+    InputTextModule,
+    RippleModule,
+    CommonModule,
+    RouterLinkActive,
+  ],
   templateUrl: './nav-bar-auth.component.html',
-  styleUrl: './nav-bar-auth.component.scss'
+  styleUrl: './nav-bar-auth.component.scss',
 })
 export class NavBarAuthComponent {
-items: MenuItem[] | undefined;
-
-    ngOnInit() {
-        this.items = [
-            {
-                label: 'Login',
-                icon: 'pi pi-home',
-                path:'login'
-            },
-            {
-                label: 'Register',
-                icon: 'pi pi-star',
-                path:'Register'
-            },
-           
-        ];
-    }
-
+  items: MenuItem[] | undefined;
+  routerpath: MenuItem[] | undefined;
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'Login',
+        icon: 'pi pi-home',
+        path: 'login',
+      },
+      {
+        label: 'Register',
+        icon: 'pi pi-star',
+        path: 'Register',
+      },
+    ];
+    this.routerpath = [
+      {
+        label: 'home',
+        icon: 'pi pi-star',
+        path: 'home',
+      },
+      {
+        label: 'about',
+        icon: 'pi pi-star',
+        path: 'about',
+      },  {
+        label: 'product',
+        icon: 'pi pi-star',
+        path: 'product',
+      },  {
+        label: 'Dashbord',
+        icon: 'pi pi-star',
+        path: 'Dashbord',
+      },
+    ];
+  }
 }

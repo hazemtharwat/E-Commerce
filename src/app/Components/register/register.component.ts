@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, inject, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -18,10 +18,15 @@ import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
 import { Message, MessageService } from 'primeng/api';
-import { RegisterServiceService } from '../../core/Services/register-service.service';
-import { Iregister } from '../../core/Interfaces/iregister';
 import { ToastModule } from 'primeng/toast';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../../core/Services/auth-service.service';
+import { Iregister } from '../../core/Interfaces/iauth';
+import { take } from 'rxjs';
+import { AutoFocusModule } from 'primeng/autofocus';
+
+
 
 @Component({
   selector: 'app-register',
@@ -40,16 +45,20 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
     DropdownModule,
     MessagesModule,
     NgxSpinnerModule,
+    AutoFocusModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   providers: [MessageService],
 })
 export class RegisterComponent implements OnInit {
+  isSubmitted=false;
+  @ViewChild ('submitbtn') el!:ElementRef
   constructor(private fb: FormBuilder) {}
   private _messageService = inject(MessageService);
-  private _RegisterService = inject(RegisterServiceService);
+  private _RegisterService = inject(AuthServiceService);
   private _NgxSpinnerService=inject(NgxSpinnerService)
+  private _router=inject(Router)
   messages!: Message[];
   RegisterForm!: FormGroup;
   gender: string[] = ['male', 'female'];
@@ -83,16 +92,16 @@ export class RegisterComponent implements OnInit {
       Email: ['', [Validators.required, Validators.email]],
       Password: ['', [Validators.required]],
       rePassword:['',[Validators.required]],
-      gender:['',[Validators.required]],
-      countries:[null,Validators.required]
+      gender:[''],
+      countries:[null]
     },{validators:this.matchpassword.bind(this)})
     this.messages = [];
   }
   matchpassword(group:AbstractControl){
    let pass=group.get('Password')?.value;
    let repass=group.get('rePassword')?.value;
+
    if(pass!==repass){
-    // repass.setErrors({...repass.errors,passwordNotMact:true})
    return {passwordNotMact:true}
    }
 
@@ -114,23 +123,23 @@ export class RegisterComponent implements OnInit {
       data!=='gender' && data!== 'countries'
     )
   }
-
   Register() {
     if(this.RegisterForm.invalid){
       this.RegisterForm.markAllAsTouched();
-    }
-    if (this.RegisterForm.valid) {
-      console.log(this.RegisterForm.value);
+    }if(this.RegisterForm.valid){
+      this.isSubmitted=true
       this.signUp(this.RegisterForm.value);
+      this.RegisterForm.markAsPristine()
     }
   }
   signUp(data: Iregister): void {
     this._NgxSpinnerService.show()
-    this._RegisterService.Register(data).subscribe({
+    this._RegisterService.Register(data).pipe(take(1)).subscribe({
       next: (res) => {
-        console.log(res, 'success ');
         this.success('success','success', 'success');
         this._NgxSpinnerService.hide()
+        const userid=res.id
+        this._router.navigate(['login'],{queryParams:{id:userid}})
       },
       error: (err) => {
         this.success('error','error', err.error.error);

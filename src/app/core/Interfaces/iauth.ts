@@ -4,7 +4,7 @@ usernameL:string,
 email: string;
 password: string;
 }
-// "id": 0,
-// "username": "string",
-// "email": "string",
-// "password": "string"
+export interface ILogin{
+    Email:string;
+    password:string;
+}
