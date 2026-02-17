@@ -1,6 +1,6 @@
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { BadgeModule } from 'primeng/badge';
@@ -8,7 +8,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-nav-bar-auth',
   standalone: true,
@@ -27,6 +27,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav-bar-auth.component.scss',
 })
 export class NavBarAuthComponent {
+  private router=inject(Router)
   items: MenuItem[] | undefined;
   routerpath: MenuItem[] | undefined;
   ngOnInit() {
@@ -58,5 +59,9 @@ export class NavBarAuthComponent {
         path: 'product',
       },   
     ];
+  }
+  logout(){
+    localStorage.removeItem('usertoken')
+    this.router.navigate(['login'])
   }
 }

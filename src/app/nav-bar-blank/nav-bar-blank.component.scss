@@ -1,5 +1,29 @@
-.active{
-    background-color: #8b8b8b;
-    border-bottom: 2px solid orange;
+.logout{
+    margin-left: 65%;
+    margin-top: 1rem;
+    font-weight: bold;
+    
+}
+.logout:hover{
+    color: #ff7632;
+}
+.userD{
+    background-color: #ff7632;
+    padding: 1rem ;
+    margin-left:1rem ;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 
+
+}
+ .arrow-down {
+    margin-top: 10px;
+  width: 0;
+  height: 0;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-top: 1px solid white;
 }

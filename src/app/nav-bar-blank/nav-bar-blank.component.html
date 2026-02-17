@@ -2,7 +2,7 @@
     <p-menubar  class="ms-10 ">
         <ng-template  pTemplate="start">
            <div class="flex align-items-center ml-8">
-             <img src="../assets/6bfc1ba8-233d-4e84-b7c6-c19a19c25a9d.png" class="w-1  mr-5 inline-flex " alt="">
+             <!-- <img src="../assets/6bfc1ba8-233d-4e84-b7c6-c19a19c25a9d.png" class="w-1  mr-5 inline-flex " alt=""> -->
             @for(p of routerpath ;track $index){
                 <a pRipple class="align-items-center p-menuitem-link ml-5
              p-link inline-flex justify-content-center h-3rem  border-[1px] border-width:2px
@@ -13,17 +13,31 @@
             }
            </div>
         </ng-template>
-        <ng-template pTemplate="end">
+
+        <div class="p-toolbar-group-center ">
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText placeholder="Search" />
+        </span>
+    </div>
+
+        <ng-template pTemplate="end" class="flex" >
           @for (item of items; track $index) {
             <a pRipple class="align-items-center p-menuitem-link mx-3 
              p-link inline-flex justify-content-center h-3rem  border-[1px] border-width:2px
              hover:bg-black-alpha-10  transition-all transition-duration-200"
                 [routerLink]="[item?.['path']]" routerLinkActive="border-b-2 p-6">
                 <span [class]="item.icon" ></span>
-                
                 <span class="ml-2">{{ item.label }}</span>
                
             </a>
+              <a (click)="openlogout()" class="cursor-pointer ">
+              <span class="username  userD">{{username}}</span>
+              @if(logoutbtn){
+                <span (click)="logout()" class="block logout ">logout</span>
+              }
+            </a>
+         
           }
         </ng-template>
     </p-menubar>

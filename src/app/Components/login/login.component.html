@@ -3,17 +3,35 @@
     <div class="container mx-auto">
         <h4>login</h4>
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
-  @for (userData of loginDataControls; track $index) {
+  <!-- @for (userData of loginDataControls; track $index) {
             <p-inputGroup class="my-3">
     <p-inputGroupAddon>
     <i class="pi pi-user"></i>
     </p-inputGroupAddon>
     <input pInputText [placeholder]="userData" 
     [formControlName]="userData" class="w-25" 
-    [autofocus]="true" 
+    [autofocus]="true" [(ngModel)]="userinfo"
 />
     </p-inputGroup>
-  }
+  } -->
+              <p-inputGroup class="my-3">
+    <p-inputGroupAddon>
+    <i class="pi pi-user"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="اسم المستخدم" 
+    formControlName="username" class="w-25" 
+    [autofocus]="true"
+/>
+ </p-inputGroup>
+             <p-inputGroup class="my-3">
+    <p-inputGroupAddon>
+    <i class="pi pi-user"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="كلمه المرور" 
+    formControlName="password" class="w-25" 
+    [autofocus]="true" 
+/>
+ </p-inputGroup> 
      <button pButton pRipple class="p-button-success d-block my-3">submit</button>
 
         </form>
