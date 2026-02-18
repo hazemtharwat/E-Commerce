@@ -2,3 +2,19 @@
     width: full;
     overflow: hidden;
 }
+.btnToCart{
+    display: inline-block;
+    width: 100%;
+    background-color: #ff7632;
+    text-align: center !important; 
+    padding: .5rem;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.btnToCart:hover{
+    background-color: #eb4e00;
+    color: white;
+}

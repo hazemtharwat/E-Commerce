@@ -80,10 +80,9 @@ export class LoginComponent {
         next: (res) => {
           this._Loding.hide();
           this._userData.userName.next(res.username)
-
           const token = localStorage.setItem('usertoken', res.token);
-          this.success("success","success","success")
           this.router.navigate(['/home']);
+          this.success("success","success","success")
         },
         error: (err) => {
         this.success('error','error', err.error.error);

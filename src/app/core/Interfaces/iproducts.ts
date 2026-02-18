@@ -13,3 +13,12 @@ export interface Rating {
   rate: number
   count: number
 }
+
+export interface IsaleList {
+  itemImageSrc: string;
+  alt: string;
+  title: string;
+  price: string;
+  id: number;
+  description:string;
+}

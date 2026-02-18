@@ -1,7 +1,9 @@
 <section>
     
     <div class="container mx-auto">
-        <h4>login</h4>
+         <h1 class="text-2xl font-bold  pl-3 mt-8 mb-3 text-red-600">
+        Login
+      </h1>
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
   <!-- @for (userData of loginDataControls; track $index) {
             <p-inputGroup class="my-3">
@@ -32,12 +34,14 @@
     [autofocus]="true" 
 />
  </p-inputGroup> 
-     <button pButton pRipple class="p-button-success d-block my-3">submit</button>
-
+     <!-- <button pButton pRipple class="p-button-success d-block my-3">submit</button> -->
+        <button class="w-3 mt-3 p-button p-component text text-center btnToCart">
+            Login
+          </button>
         </form>
     </div>    
 </section>
   <div class="card flex justify-content-center gap-2">
    <p-toast />
        </div>
-<ngx-spinner bdColor = "rgba(0,0,0,0.4)" size = "medium" color = "#fff" type = "fire" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0,0,0,0.8)" size = "medium" color = "#eb4e00" type = "fire" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

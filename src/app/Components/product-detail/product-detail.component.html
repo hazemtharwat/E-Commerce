@@ -1,1 +1,178 @@
-<p>product-detail works!</p>
+<section class="w-[90%] mx-auto my-4">
+@if(productList){
+  <h1 class="text-2xl text-red-700 font-bold border-l-4 border-red-700 pl-3 mb-4">
+    {{productList.title}}
+  </h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Left Side -->
+    <div class="flex justify-center">
+      <div class="w-[80%]">
+
+        <div class="mt-3 p-4 rounded-xl shadow-lg bg-white text-center cursor-pointer">
+
+          <div class="flex flex-col items-center">
+
+            <img
+              [src]="productList.image"
+              alt="{{ productList.title }}"
+              class="w-full mb-3 h-a object-contain b-rduce"
+            />
+
+            <h2 class="text-left font-bold mb-2 w-full">
+              {{ productList.title.slice(0,20) }}
+            </h2>
+
+            <div class="flex justify-between w-full mt-2">
+              <span class="font-semibold">
+                Price: ${{ productList.price }}
+              </span>
+              <span class="font-medium">
+                Rate: {{ productList.rating.rate }}
+              </span>
+            </div>
+
+          </div>
+
+          
+
+        </div>
+
+       <button class="w-full mt-3 p-button p-component text-center btnToCart">
+            add to cart 
+          </button>
+      </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="flex justify-center">
+      <div class="w-[80%]">
+
+        <div class="mt-3 p-4 rounded-xl shadow-lg bg-white text-center cursor-pointer">
+
+          <div class="flex flex-col items-center">
+
+            <img
+              [src]="productList.image"
+              alt="{{ productList.title }}"
+              class="w-25 mb-3 h-40 object-contain border-4"
+            />
+
+            <h2 class="text-left font-bold mb-2 w-full">
+              {{ productList.title.slice(0,20) }}
+            </h2>
+            
+            <p class="text-left font-bold mb-2 w-full">
+              {{ productList.description }}
+            </p>
+
+            <div class="flex justify-between w-full mt-2">
+              <span class="font-semibold">
+                Price: ${{ productList.price }}
+              </span>
+              <span class="font-medium">
+                Rate: {{ productList.rating.rate }}
+              </span>
+            </div>
+
+          </div>
+
+       <button class="w-full mt-3 p-button p-component text-center btnToCart">
+            add to cart 
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+}
+@if(saleLst){
+  <h1>saleList</h1>
+   <h1 class="text-2xl text-red-700 font-bold border-l-4 border-red-700 pl-3 mb-4">
+   {{saleLst.title }}
+  </h1>
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+   <!-- Left Side -->
+      <div class="flex justify-center">
+      <div class="w-[80%]">
+
+        <div class="mt-3 p-4 rounded-xl shadow-lg bg-white text-center cursor-pointer">
+
+          <div class="flex flex-col items-center">
+
+            <img
+              [src]="saleLst.itemImageSrc"
+              alt="{{ saleLst.title }}"
+              class="w-full mb-3 h-a object-contain border-4"
+            />
+
+            <h2 class="text-left font-bold mb-2 w-full">
+              {{ saleLst.title }}
+            </h2>
+
+            <div class="flex justify-between w-full mt-2">
+              <span class="font-semibold">
+                Price: ${{ saleLst.price }}
+              </span>
+            </div>
+
+          </div>
+
+          <button class="w-full mt-3 p-button p-component text-center btnToCart">
+            add to cart 
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Right Side -->
+    <div class="flex justify-center">
+      <div class="w-[80%]">
+
+        <div class="mt-3 p-4 rounded-xl shadow-lg bg-white text-center cursor-pointer">
+
+          <div class="flex flex-col items-center">
+
+            <img
+              [src]="saleLst.itemImageSrc"
+              alt="{{ saleLst.title }}"
+              class="w-25 mb-3 h-40 object-contain border-4"
+            />
+
+            <h2 class="text-left font-bold mb-2 w-full">
+              {{ saleLst.title }}
+            </h2>
+            
+            <p class="text-left font-bold mb-2 w-full">
+              {{ saleLst.description }}
+            </p>
+
+            <div class="flex justify-between w-full mt-2">
+              <span class="font-semibold">
+                Price: ${{ saleLst.price }}
+              </span>
+              
+            </div>
+
+          </div>
+
+          <button class="w-full mt-3 p-button p-component text-center btnToCart">
+            add to cart 
+          </button>
+
+        </div>
+
+      </div>
+    </div>-->
+    
+  </div> 
+}
+
+
+
+</section>

@@ -27,7 +27,7 @@ export const routes: Routes = [
     {path:"home",component:HomeComponent},
     {path:"product",loadComponent:()=>import('./Components/product-list/product-list.component').then((c)=>c.ProductListComponent)},
     {path:"Dashbord",component:DashbordComponent},
-    {path:"prodDetail",loadComponent:()=>import('./Components/product-detail/product-detail.component').then((c)=>c.ProductDetailComponent)},
+    {path:"prodDetail/:id",loadComponent:()=>import('./Components/product-detail/product-detail.component').then((c)=>c.ProductDetailComponent)},
     {path:'cart',loadComponent:()=>import('./Components/cart/cart.component').then((c)=>c.CartComponent)}
     ]},
     {path:"**",component:NotFoundComponent}

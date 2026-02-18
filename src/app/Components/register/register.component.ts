@@ -102,7 +102,7 @@ export class RegisterComponent implements OnInit {
    let repass=group.get('rePassword')?.value;
 
    if(pass!==repass){
-   return {passwordNotMact:true}
+   return {passwordNotMatch:true}
    }
 
    return null
