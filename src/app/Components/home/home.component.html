@@ -1,1 +1,220 @@
-<p>home works!</p>
+<!-- <section class="w-[90%] ml-3 my-4">
+  <div class="grid">
+  <div class="col-12 md:col-6">
+    <h1 class="text-2xl text-red-700 font-bold border-left-3 pl-3 mb-4">
+      Hot Sale
+    </h1>
+
+    <p-galleria
+      [value]="images"
+      [circular]="true"
+      [showItemNavigators]="true"
+      [showThumbnails]="false"
+      [containerStyle]="{
+        'max-width': '100%',
+        'border-radius': '12px',
+        overflow: 'hidden'
+      }"
+    >
+      <ng-template pTemplate="item" let-item>
+        <img
+          [src]="item.itemImageSrc"
+          class="w-full h-25rem object-contain"
+        />
+      </ng-template>
+    </p-galleria>
+  </div>
+  <div class="col-12 md:col-6">
+    <div class="grid">
+      
+      @for (prod of images; track $index) {
+        <div class="col-6">
+      <a [routerLink]="['/prodDetail',prod.id]">
+            <div class="p-3 border-round-xl shadow-2 bg-white text-center ">
+
+            <img
+              [src]="prod.itemImageSrc"
+              class="w-full h-8rem object-contain mb-3 saleProd"
+            />
+            <p class="text-sm text-500 m-0">
+             {{prod.title}}
+            </p>
+            <p class="text-sm text-500 m-0">
+             {{prod.alt}}
+            </p>
+            
+             <span class="text-lg font-bold text-red-500 line-through mx-2">
+              {{prod.price}}
+            </span>
+              <span class="text-lg font-bold text-red-500 m-0">
+              {{prod.price}}
+            </span>
+           
+          </div>
+      </a>
+        </div>
+      }
+
+    </div>
+  </div>
+
+</div>
+
+    <div class="col-6 md:col-3">
+    @for (Uproduct of productList.splice(0,4) ; track $index) {
+ <div class="col-12 md:col-2 rounded-md " >
+    <div class="card p-3 flex flex-column align-items-center">
+      <a [routerLink]="['/prodDetail']">
+        <img
+        [src]="Uproduct.image"
+        alt="{{ Uproduct.title }}"
+        class="w-full mb-3 cursor-pointer"
+        style="max-height: 100px; object-fit: contain"
+      />
+      </a>
+      <h2 class="text-center text-lg font-bold mb-2">
+        {{ Uproduct.title }}
+      </h2>
+      <p class="text-sm text-gray-600">{{ product.description }}</p>
+      <div class="flex justify-content-between w-full mt-2">
+        <span class="font-semibold">Price: ${{ Uproduct.price }}</span>
+        <span class="font-medium">Rate: {{ Uproduct.rating.rate }}</span>
+      </div>
+    </div>
+  </div>
+    }
+    </div> -->
+    
+<!-- <div class="md:ml-8">
+
+  <div class="grid w-[80%]  mx-auto gap-3">
+    @for (product of productList; track $index) {
+      <div class="col-12 md:col-2 mt-3 p-3 border-round-xl shadow-2 bg-white text-center cursor-pointer">
+    <div class="card p-3 mx-auto  flex flex-column align-items-center">
+      <a [routerLink]="['/prodDetail',product.id]">
+        <img
+        [src]="product.image"
+        alt="{{ product.title }}"
+        class="w-full mb-3 cursor-pointer h-20"
+        style="max-height: 150px; object-fit: contain "
+      />
+      
+      <h2 class="text-left  font-bold mb-2">
+        {{ product.title.slice(0,20) }}
+      </h2>
+      <div class="flex justify-content-between w-full mt-2">
+        <span class="font-semibold">Price: ${{ product.price }}</span>
+        <span class="font-medium">Rate: {{ product.rating.rate }}</span>
+      </div>
+        </a>
+    </div>
+    <button class="btnToCart w-full mt-2">add to cart</button>
+  </div>
+    }
+ 
+</div>
+</div>
+</section>  -->
+
+
+<section class="w-[90%] mx-auto my-4">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
+    <div>
+
+      <h1 class="text-2xl font-bold border-left-3 pl-3 mb-4 text-red-600">
+        Hot Sale
+      </h1>
+
+      <p-galleria
+        [value]="images"
+        [circular]="true"
+        [showItemNavigators]="true"
+        [showThumbnails]="false"
+        [containerStyle]="{'border-radius': '12px', overflow: 'hidden'}"
+      >
+        <ng-template pTemplate="item" let-item>
+          <img
+            [src]="item.itemImageSrc"
+            class="w-full h-25rem object-contain"
+          />
+        </ng-template>
+      </p-galleria>
+
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      @for (prod of images; track $index) {
+
+        <a [routerLink]="['/prodDetail',prod.id]">
+          <div class="p-3 border-round-xl shadow-2 bg-white text-center">
+
+            <img
+              [src]="prod.itemImageSrc"
+              class="w-full h-8rem object-contain mb-3"
+            />
+
+            <p class="text-sm text-500 m-0">
+              {{ prod.title }}
+            </p>
+
+            <span class="text-lg font-bold text-red-500">
+              {{ prod.price }}
+            </span>
+
+          </div>
+        </a>
+
+      }
+
+    </div>
+
+  </div>
+
+      <h1 class="text-2xl font-bold border-left-3 pl-3 mb-4 text-red-600">
+        Products
+      </h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full mt-5">
+
+    @for (product of productList; track $index) {
+
+      <div>
+
+        <div class="p-3 border-round-xl shadow-2 bg-white text-center">
+
+          <a [routerLink]="['/prodDetail', product.id]">
+
+            <img
+              [src]="product.image"
+              class="w-full h-10rem object-contain mb-3"
+            />
+
+            <h2 class="text-sm font-bold mb-2">
+              {{ product.title.slice(0,20) }}
+            </h2>
+
+            <div class="flex justify-content-between text-sm">
+              <span>${{ product.price }}</span>
+              <span>{{ product.rating.rate }}</span>
+            </div>
+
+          </a>
+
+          <button class="w-full mt-3 p-button p-component text-center btnToCart">
+            add to cart 
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</section>
+
+<ngx-spinner bdColor = "rgba(0,0,0,0.4)" size = "medium" color = "#fff" type = "fire" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

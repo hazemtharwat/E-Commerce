@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { AutoFocusModule } from 'primeng/autofocus';
+import { UserDataService } from '../../core/Services/user-data.service';
 
 @Component({
   selector: 'app-login',
@@ -42,11 +43,15 @@ import { AutoFocusModule } from 'primeng/autofocus';
   providers: [MessageService],
 })
 export class LoginComponent {
+  userinfo:string=""
+  loginData:ILogin[]=[]
   private _loginservice = inject(AuthServiceService);
   private _Loding = inject(NgxSpinnerService);
   private router = inject(Router);
   private _messageService=inject(MessageService)
+  private _userData=inject(UserDataService)
   loginForm!: FormGroup;
+
 
   constructor(private fb: FormBuilder) {}
 
@@ -62,21 +67,22 @@ export class LoginComponent {
   submitLogin() {
     if (this.loginForm.valid) {
       this.login(this.loginForm.value);
+      this.userinfo=this.loginForm.value.username
+      localStorage.setItem('username',this.userinfo)
+      console.log(this.userinfo)
     } else {
       this.loginForm.markAllAsTouched();
     }
   }
   login(data: ILogin) {
     this._Loding.show();
-    this._loginservice
-      .login(data)
-      .pipe(take(1))
-      .subscribe({
+    this._loginservice.login(data).pipe(take(1)).subscribe({
         next: (res) => {
           this._Loding.hide();
+          this._userData.userName.next(res.username)
           const token = localStorage.setItem('usertoken', res.token);
+          this.router.navigate(['/home']);
           this.success("success","success","success")
-          this.router.navigate(['/home'], { queryParams: { id: res.id } });
         },
         error: (err) => {
         this.success('error','error', err.error.error);

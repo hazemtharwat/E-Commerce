@@ -1,0 +1,23 @@
+.b-rduce{
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+.btnToCart{
+    display: inline-block;
+    width: 100%;
+    background-color: #00a013;
+    text-align: center !important; 
+    padding: .5rem;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.btnToCart:hover{
+    background-color: #00c617;
+    color: white;
+}

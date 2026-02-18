@@ -18,4 +18,5 @@ export class AuthServiceService {
     login(loginData:ILogin):Observable<any>{
       return this.http.post(`${baseUrl}/auth/login`,loginData)
     }
+  
 }

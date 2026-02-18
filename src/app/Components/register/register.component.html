@@ -1,6 +1,9 @@
 <section>
-  <h1 class="center">Register</h1>
-  <div class="container w-1/2 mx-auto ">
+
+  <div class="container w-1/2 mx-auto mt-5 ">
+        <h1 class="text-2xl font-bold  pl-3 mb-4 text-red-600">
+        Register
+      </h1>
     <form [formGroup]="RegisterForm" (ngSubmit)="Register()">
    @for (detail of controls; track $index) {
      <p-inputGroup class="my-3">
@@ -19,7 +22,7 @@
     </div>
     }
    }
-@if(RegisterForm.hasError('passwordNotMact')&&RegisterForm.getError('touched')){
+@if(RegisterForm.hasError('passwordNotMatch')&&RegisterForm.touched){
      <div class="card">
     <p-messages 
         [value]="[{ severity: 'error', detail: 'كلمه السر غير متطابقه' }]" 
@@ -61,4 +64,4 @@
        </div>
   </div>
 </section>
-<ngx-spinner bdColor = "rgba(0,0,0,0.4)" size = "medium" color = "#fff" type = "fire" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0,0,0,0.8)" size = "medium" color = "#eb4e00" type = "fire" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
