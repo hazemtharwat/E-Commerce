@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{Fb as r,Mb as i,_ as n,ob as o,pb as a}from"./chunk-GQ4QM4VA.mjs";import"./chunk-VVCT4QZE.mjs";var m=(()=>{class t{static{this.\u0275fac=function(e){return new(e||t)}}static{this.\u0275cmp=n({type:t,selectors:[["app-cart"]],standalone:!0,features:[i],decls:2,vars:0,template:function(e,s){e&1&&(o(0,"p"),r(1,"cart works!"),a())}})}}return t})();export{m as CartComponent};
