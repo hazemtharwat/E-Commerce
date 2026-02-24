@@ -1,3 +1,4 @@
+import { take } from 'rxjs';
 import { CartServiceService } from './../../core/Services/cart-service.service';
 import { Component, inject } from '@angular/core';
 
@@ -12,7 +13,10 @@ export class CartComponent {
   private _CartServiceService=inject(CartServiceService)
   
   ngOnInit(): void {
-    this._CartServiceService.getCartData().subscribe({
+  this.getCartData()
+  }
+  getCartData(){
+       this._CartServiceService.getCartData().pipe(take(1)).subscribe({
       next:(res)=>{
         console.log(res);
         

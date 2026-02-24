@@ -68,8 +68,9 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.login(this.loginForm.value);
       this.userinfo=this.loginForm.value.username
+      this._loginservice.setLogedInfo(this.userinfo)
+      
       localStorage.setItem('username',this.userinfo)
-      console.log(this.userinfo)
     } else {
       this.loginForm.markAllAsTouched();
     }

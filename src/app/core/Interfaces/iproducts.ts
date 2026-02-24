@@ -7,6 +7,7 @@ export interface Iproducts {
   category: string
   image: string
   rating: Rating
+  // GoToCart:boolean;
 }
 
 export interface Rating {
@@ -21,4 +22,14 @@ export interface IsaleList {
   price: string;
   id: number;
   description:string;
+}
+
+export interface Icart {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+   
 }

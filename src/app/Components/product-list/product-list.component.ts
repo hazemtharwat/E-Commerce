@@ -1,4 +1,4 @@
-import { Iproduct } from '../../iproduct';
+import { Iproduct } from '../../oldProduct';
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchPipPipe } from '../../search-pip.pipe';

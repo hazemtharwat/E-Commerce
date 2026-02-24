@@ -4,6 +4,7 @@ import { ProductsService } from '../../core/Services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { Iproducts, IsaleList } from '../../core/Interfaces/iproducts';
 import { CLIENT_RENEG_LIMIT } from 'tls';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -17,18 +18,23 @@ export class ProductDetailComponent implements OnInit {
   private routes=inject(ActivatedRoute)
  productList:any
   saleLst:any;
-  id!:string|null
+  id:string|null=""
 
   ngOnInit(): void {
-    this.id=this.routes.snapshot.paramMap.get('id')
+    this.routes.paramMap.subscribe({
+      next:(res)=>{
+         this.id=res.get('id')
+      }
+    })
     this.getproductDetail()
     this.getsaleList()
   }
 getproductDetail(){
   if(this.id!==null){
-    this._productList.getProductdetail(this.id).subscribe({
+    this._productList.getProductdetail(this.id).pipe(take(1)).
+    subscribe({
       next:(res)=>{
-        console.log(res,"sale lissssssssst");
+        // console.log(res,"sale lissssssssst");
         
        this.productList=res
       },
@@ -41,7 +47,7 @@ getproductDetail(){
 getsaleList(){
     if(this.id!==null){
       
-  this._productList.saleList(this.id).subscribe({
+  this._productList.saleList(this.id).pipe(take(1)).subscribe({
     next:(res)=>{
        this.saleLst=res.find(el=>(el.id == Number(this.id))
        )

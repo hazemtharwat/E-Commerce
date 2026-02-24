@@ -1,12 +1,12 @@
 
 <div class="container">
  <div class="d-flex align-items-center my-3">
-     <label for="">Search</label>
+     <label for="">Search ............</label>
     <input placeholder="Search...." type="text"  [(ngModel)]="searchInput" class="form-control">
    </div>
     <div class="row">
 @for (product of productData; track $index) {
-            <div (click)="openProducrt(product)" style="cursor: pointer;" class="col-md-3 border border-2">
+            <div (click)="openProducrt(product)" style="cursor: pointer;" class="col-md-3 border-2">
             <div class="div">
                 <img [src]="product.poster_path" class="w-75 mx-auto" alt="">
                 <h4>{{product.title}}</h4>
