@@ -1,10 +1,8 @@
 import { Iproduct } from '../../oldProduct';
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchPipPipe } from '../../search-pip.pipe';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { log } from 'console';
 import { ProductServiceService } from '../../product-service.service';
 
 @Component({

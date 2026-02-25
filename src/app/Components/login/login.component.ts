@@ -11,7 +11,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { AuthServiceService } from '../../core/Services/auth-service.service';
-import { ILogin } from '../../core/Interfaces/iauth';
+import { ILogin, IuserLogedInfo } from '../../core/Interfaces/iauth';
 import { take } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
@@ -43,7 +43,7 @@ import { UserDataService } from '../../core/Services/user-data.service';
   providers: [MessageService],
 })
 export class LoginComponent {
-  userinfo:string=""
+  userinfo!:IuserLogedInfo
   loginData:ILogin[]=[]
   private _loginservice = inject(AuthServiceService);
   private _Loding = inject(NgxSpinnerService);
@@ -67,10 +67,8 @@ export class LoginComponent {
   submitLogin() {
     if (this.loginForm.valid) {
       this.login(this.loginForm.value);
-      this.userinfo=this.loginForm.value.username
-      this._loginservice.setLogedInfo(this.userinfo)
-      
-      localStorage.setItem('username',this.userinfo)
+      this.userinfo=this.loginForm.value.username      
+      localStorage.setItem('username',this.userinfo.username)
     } else {
       this.loginForm.markAllAsTouched();
     }
@@ -81,7 +79,9 @@ export class LoginComponent {
         next: (res) => {
           this._Loding.hide();
           this._userData.userName.next(res.username)
+          this._loginservice.setLogedInfo(res)
           const token = localStorage.setItem('usertoken', res.token);
+          const userinfo = JSON.stringify(localStorage.setItem('userData', res))
           this.router.navigate(['/home']);
           this.success("success","success","success")
         },
